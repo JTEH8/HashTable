@@ -1,7 +1,7 @@
 #include "Student.h"
 #include <cstring>
 //Constructor
-Student::Student(char* firstname, char* lastname, int id, float gpa){
+Student::Student(char firstname[100], char lastname[100], int id, float gpa){
 strcpy(firstName, firstname);
 strcpy(lastName, lastname);
 ID = id;
