@@ -34,7 +34,15 @@ Student* generateStudent(){
     lastNames >> lastName;
     arr2[j] = lastName;
     }
-    char* studentFirst = arr[rand() %100 + 1];
-    char* studentFirst = arr[rand() %100 + 1];
-
+    char* temp = arr[rand() %100 + 1];
+    /*
+    for()
+    char* studentLast = arr2[rand() %100 + 1];
+    int studentID = rand() %8999 + 1000;
+    //Help from here: https://stackoverflow.com/questions/45201838/c-generating-a-double-between-2-doubles in generating a random GPA
+    //Range== 0,4.0 with 3 decimal places    
+    double studentGPA = (double)(rand()%4100)/1000;
+    Student* temp(temp,, studentID, studentGPA);
+    return S;
+    */
 }
