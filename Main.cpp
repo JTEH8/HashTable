@@ -140,3 +140,7 @@ void generateStudent(Node** HashTable, int temp, int &id, int size){
 int hashFunction(Student* newStudent, int size){
     return newStudent->getID() % size;
 }
+
+int checkCollision(Node* head){
+return 0;
+}
