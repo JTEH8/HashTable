@@ -8,6 +8,7 @@ Done with help from Ruby Amyeen and Nathan Zou
 #include <fstream>
 #include <cstring>
 #include <stdlib.h>
+#include <math.h>
 #include <iomanip>
 #include "Node.h"
 #include "Student.h"
@@ -17,7 +18,7 @@ using namespace std;
 Student* generateStudent();
 void ADD(Node* &head, Student* newStudent);
 void PRINT(Node* head);
-void DELETE(Student** list, int ID, int size);
+void DELETE(Node** &HashTable, int ID, int size);
 int checkCollision(Node* head);
 int hashFunction(Student* newStudent, int size);
 
@@ -64,6 +65,11 @@ Node** HashTable = new Node*[size];
 
         }
         else if(strcmp(input, "DELETE") == 0){
+            int deleteID = 0;
+            cout << "Enter the ID of the Student you're deleting" << endl;
+            cin >> deleteID;
+            DELETE(HashTable, deleteID, size);
+
         }
         else if(strcmp(input, "PRINT") == 0){
             for(int i = 0; i < size; i++){
@@ -109,6 +115,14 @@ if(head != NULL){
     PRINT(head->getNext()); 
     }
 }
+void DELETE(Node** &HashTable, int ID, int size){
+    for(int i = 0; i < size; i++){
+        if(HashTable[i]->getNext()->getStudent()->getID() == ID){   
+            Node* current = HashTable[i];
+            current->setNext(current->getNext()->getNext());
+        }
+    }
+}
 
 Student* generateStudent(){
     char* arr[100];
@@ -133,7 +147,8 @@ Student* generateStudent(){
     //To generate a random float, help from https://www.tutorialspoint.com/how-do-i-generate-random-floats-in-cplusplus
     //Range== [0,4.0]    
     float max = 4.0;
-    float studentGPA = float(rand())/float((RAND_MAX)* max);
+    float studentGPA = (float(rand())/float((RAND_MAX)) * max);
+    studentGPA = roundf(studentGPA * 100) / 100;
     Student* temp2 = new Student(studentFirst,studentLast, studentID, studentGPA);
     return temp2;
 }
