@@ -14,7 +14,7 @@ Done with help from Ruby Amyeen and Nathan Zou
 
 using namespace std;
 
-void generateStudent(Node** HashTable, int temp, int &id, int size);
+Student* generateStudent();
 void ADD(Node* &head, Student* newStudent);
 void PRINT(Node* head);
 void DELETE(Student** list, int ID, int size);
@@ -75,7 +75,10 @@ Node** HashTable = new Node*[size];
             int num = 0;
             cout << "How many students do you want to add?" << endl;
             cin >> num;
-            generateStudent(HashTable, num, randID, size);
+            for(int i = 0; i < num; i++){
+            Student* temp = generateStudent();
+            ADD(HashTable[hashFunction(temp, size)], temp);            
+            }
         }
         else if(strcmp(input, "QUIT") == 0){
             cout << "Exiting Student List - Hash Table Edition." << endl;
@@ -107,7 +110,7 @@ if(head != NULL){
     }
 }
 
-void generateStudent(Node** HashTable, int temp, int &id, int size){
+Student* generateStudent(){
     char* arr[100];
     char* arr2[100];
     fstream firstNames;
@@ -124,7 +127,6 @@ void generateStudent(Node** HashTable, int temp, int &id, int size){
     lastNames >> lastName;
     arr2[j] = lastName;
     }
-    for(int i = 0; i < temp; i++){
     char* studentFirst = arr[rand() %100 + 1];
     char* studentLast = arr2[rand() %100 + 1];
     int studentID = rand() %8999 + 1000;
@@ -133,9 +135,7 @@ void generateStudent(Node** HashTable, int temp, int &id, int size){
     float max = 4.0;
     float studentGPA = float(rand())/float((RAND_MAX)* max);
     Student* temp2 = new Student(studentFirst,studentLast, studentID, studentGPA);
-    ADD(HashTable[temp2, size], temp2);
-    }
-
+    return temp2;
 }
 int hashFunction(Student* newStudent, int size){
     return newStudent->getID() % size;
