@@ -19,7 +19,7 @@ Node(Student* newStudent);
 //Getters and Setters for Nodes
 Node* getNext();
 void setNext(Node* newNext);
-//Getters and setters for data
+//Getters and setters for Student data
 Student* getStudent();
 void setStudent(Student* newStudent);
 };

@@ -6,7 +6,7 @@ student = newStudent;
 next = NULL;
 }
 
-//Getters for GPA, ID, first name, and lat name.
+//Getters and Setters for Next Nodes and Student data
 Node* Node:: getNext(){
     return next;
 }
