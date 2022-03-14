@@ -30,7 +30,7 @@ int main(){
 //initiating variables
 bool running = true;
 char input[100];
-int size = 11;
+int size = 101;
 int randID = 0;
 Node** HashTable = new Node*[size];
 //setting HashTable to NULL    
